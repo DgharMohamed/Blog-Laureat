@@ -6,3 +6,4 @@
 - git init : initialisation of the repo
 - git checkout -b sprint1 : creat new branch
 - gh repo create : create a repository 
+- mkdir .agents, docs, issues, tutoriels, presentations, rapport, sprints : creat new folders
