@@ -11,7 +11,7 @@ Les apprenants actuels de Solicode peuvent consulter et lire ces retours d'expé
 
 ### Contexte général
 - **Établissement** : Solicode Tanger.
-- **Promotion** : Niveau 3 - Développement Web et Mobile.
+- **Promotion** : Développement Mobile - 2026/2027.
 - **Formateur référent** : ESSARRAJ Fouad.
 
 ### Démarche pédagogique : Méthode par imitation
