@@ -12,7 +12,7 @@ Les apprenants actuels de Solicode peuvent consulter et lire ces retours d'expé
 ### Contexte général
 - **Établissement** : Solicode Tanger.
 - **Promotion** : Développement Mobile - 2026/2027.
-- **Formateur référent** : ESSARRAJ Fouad.
+- **Formateur référent** : ES-SARRAJ Fouad.
 
 ### Démarche pédagogique : Méthode par imitation
 Ce projet s'appuie sur la méthode par imitation pour guider l'apprenant pas à pas de A à Z :
