@@ -20,7 +20,7 @@ Table des matières
 - Méthode SCRUM
 - Design thinking
 - Planification
-- Persona
+- Empathie
 - Définition du problème
 - Idéation
 - Diagramme de cas d’utilisation
@@ -114,7 +114,9 @@ Le Design Thinking est donc une méthode structurée et flexible qui permet de t
 
 ---
 
-9 : Persona
+9 : Empathie
+
+## Persona
 
 ---
 
