@@ -6,11 +6,11 @@
 
 ---
 
-# Remerciement
+1 : Remerciement
 
 ---
 
-# Table des matières
+Table des matières
 
 - Remerciement
 - Introduction
@@ -18,18 +18,12 @@
 - Cahier des charges
 - Méthodologie de travail
 - Méthode SCRUM
-- Processus 2TUP
 - Design thinking
 - Planification
-- Branche fonctionnelle
-- Carte d'empathie
+- Persona
 - Définition du problème
 - Idéation
 - Diagramme de cas d’utilisation
-- Branche technique
-- Stack technologique
-- Architecture du système
-- Prototype (fonctionnalités, classes)
 - Conception
 - Diagramme de classes
 - Maquettes
@@ -39,23 +33,23 @@
 
 ---
 
-# Introduction
+2 : Introduction
 
 ---
 
-# Contexte du projet
+3 : Contexte du projet
 
 ---
 
-# Cahier des charges
+4 : Cahier des charges
 
 ---
 
-# Méthodologie de travail
+5 : Méthodologie de travail
 
 ---
 
-# Méthode SCRUM
+6 : Méthode SCRUM
 
 ## La méthode SCRUM
 
@@ -83,40 +77,7 @@ Les sprints suivants seront ajoutés au fil des sessions de planification, confo
 
 ---
 
-# Processus 2TUP
-
-## Définition
-
-La méthode **2TUP** (*Two Tracks Unified Process*) est une méthode de développement logiciel agile et itérative. Elle peut être adaptée au contexte du **Blog des Lauréats**, à ses objectifs et aux besoins des **lauréats et des apprenants de Solicode Tanger**.
-
-Sa particularité repose sur une architecture en « Y » qui sépare distinctement deux axes de réflexion :
-
-- **la branche fonctionnelle**, consacrée à la compréhension des utilisateurs, des processus et des besoins métier ;
-- **la branche technique**, consacrée à l’étude des contraintes techniques, à la conception de l’architecture et au choix des technologies.
-
-La branche fonctionnelle permet de définir la **rédaction, la publication et la consultation d’articles professionnels**, tandis que la branche technique permet de déterminer l’architecture et les outils nécessaires, tels que **Laravel, Blade, Tailwind et MySQL**.
-
-Ces deux branches progressent en parallèle, puis se rejoignent dans une phase de réalisation. Cette organisation permet de limiter les risques, de vérifier la cohérence entre les besoins métier et la solution technique, et de faire évoluer progressivement le produit.
-
-## Schéma
-
-Le schéma suivant présente le fonctionnement général de la méthode 2TUP.
-
-![Cycle en Y](assets/images.jpg)
-
-**Figure : Processus 2TUP appliqué au Blog des Lauréats**
-
-La branche fonctionnelle part de la capture des besoins et aboutit à l’analyse fonctionnelle. En parallèle, la branche technique part des besoins techniques et aboutit à la définition de l’architecture et des technologies. La convergence des deux branches déclenche la phase de réalisation, qui comprend la conception, le codage, les tests, la recette et le déploiement.
-
-## Conclusion
-
-La méthode 2TUP fournit un cadre de travail structuré et adaptable pour la réalisation du **Blog des Lauréats**. La séparation entre les branches fonctionnelle et technique facilite la compréhension des besoins et permet de prendre les décisions techniques au moment approprié.
-
-En réunissant ces deux branches dans une phase de réalisation progressive, la méthode favorise la maîtrise des risques, l’amélioration continue et l’alignement du produit final sur les besoins des **lauréats et des apprenants de Solicode Tanger**. Elle constitue ainsi une approche pertinente pour les projets dont les exigences fonctionnelles et les contraintes techniques doivent être analysées conjointement.
-
----
-
-# Design thinking
+7 : Design thinking
 
 L’adoption de la méthode Scrum a permis d’assurer une organisation efficace du travail et une meilleure gestion du projet. Elle a contribué à améliorer la qualité des fonctionnalités développées et à garantir un déroulement structuré du projet Blog des Lauréats.
 
@@ -149,27 +110,23 @@ Le Design Thinking est donc une méthode structurée et flexible qui permet de t
 
 ---
 
-# Planification
+8 : Planification
 
 ---
 
-# Branche fonctionnelle
+9 : Persona
 
 ---
 
-# Carte d'empathie
+10 : Définition du problème
 
 ---
 
-# Définition du problème
+11 : Idéation
 
 ---
 
-# Idéation
-
----
-
-# Diagramme de cas d’utilisation
+12 : Diagramme de cas d’utilisation
 
 Le diagramme de cas d’utilisation présente les acteurs du Blog des Lauréats et les actions qu’ils peuvent réaliser.
 
@@ -237,130 +194,11 @@ Le premier sprint couvre la consultation du détail d’un article tel que décr
 
 ---
 
-# Branche technique
-
-Dans cette section, nous présentons la branche technique du projet Blog des Lauréats, qui consiste à décrire les choix technologiques, les outils et l’architecture adoptés pour assurer le bon fonctionnement de l’application, tout en garantissant une solution performante, sécurisée et adaptée aux besoins identifiés.
+13 : Conception
 
 ---
 
-## Choix technologiques
-
-Dans le cadre de ce projet, plusieurs technologies modernes et complémentaires ont été sélectionnées pour garantir la performance, la maintenabilité et la rapidité de la plateforme de publication des lauréats de Solicode Tanger.
-
-### Technologies backend
-
-- **PHP et Laravel 13** : framework backend en architecture MVC, fournissant les routes, la validation, la gestion des erreurs (dont la page 404) et le rendu des gabarits Blade.
-- **Architecture 3-tiers / MVC** : séparation entre la présentation, la logique métier et l’accès aux données, avec un **contrôleur mince** qui délègue le traitement à une **classe Service**.
-
-### Technologies frontend
-
-- **Gabarits Blade** : moteur de rendu natif de Laravel, utilisé pour structurer l’interface en composants réutilisables et responsives.
-- **HTML5 et CSS3/Tailwind** : mise en page moderne, responsive et adaptée aux différents écrans.
-- **JavaScript** : interactions légères côté navigateur (navigation, menus, confirmations).
-
-### Base de données
-
-- **MySQL** : système de gestion de base de données relationnelle fiable, utilisé pour stocker les articles, les catégories et les comptes des lauréats.
-
-### Outils et utilitaires externes
-
-- **Mermaid** : génération des diagrammes de contexte, de cas d’utilisation et de classes à partir d’une syntaxe textuelle.
-- **Git et GitHub CLI (`gh`)** : gestion des versions, branches dédiées par sprint et publication du dépôt.
-- **Agent IA (Antigravity / Copilot)** : skills natifs et règles Always-On pour assister la rédaction et le développement.
-- **Markdown et Marp** : rédaction de la documentation et des diaporamas de restitution.
-- **Node.js** : compilation automatique du rapport modulaire (`concat-chapitres.js`).
-
----
-
-# Stack technologique
-
----
-
-# Architecture du système
-
-## Architecture MVC
-
-Le modèle MVC répartit l'application en trois rôles :
-
-- **Modèle** : représente les données et les règles qui leur sont liées (articles, catégories, comptes des lauréats).
-- **Vue** : affiche les informations et reçoit les actions de l'utilisateur, au moyen des gabarits Blade.
-- **Contrôleur** : reçoit une action, sollicite la logique métier et transmet le résultat à la vue.
-
-```mermaid
-flowchart LR
-    U[Utilisateur] -->|action| V[Vue Blade]
-    V -->|requête HTTP| C[Contrôleur]
-    C -->|appel| S[Classe Service]
-    S -->|lecture ou modification| M[Modèle Eloquent]
-    M -->|données| S
-    S -->|résultat| C
-    C -->|données à afficher| V
-    V -->|affichage HTML| U
-```
-
-_Figure 1 — Échange MVC : le contrôleur coordonne la vue, le service et le modèle lors d’une requête._
-
-Dans le projet, MVC est fourni par Laravel : les routes associent une URL à un contrôleur. Le contrôleur reste **mince** : il valide l’entrée, appelle une classe Service qui porte le traitement métier, puis retourne une vue Blade ou une réponse d’erreur. Les modèles Eloquent représentent les tables MySQL et les vues Blade produisent le HTML envoyé au navigateur.
-
-## Architecture 3-tiers
-
-Cette architecture sépare l’application en couches qui communiquent de proche en proche :
-
-- **Présentation** : gabarits Blade responsives (HTML5, CSS3/Tailwind, JavaScript) ; envoie les requêtes et affiche les réponses.
-- **Logique métier** : contrôleurs minces et classes Service qui appliquent les règles du projet.
-- **Accès aux données** : modèles Eloquent qui lisent et écrivent dans la base MySQL.
-
-```mermaid
-flowchart TB
-    U[Utilisateur] --> P[Présentation<br/>Blade, HTML5, CSS3/Tailwind, JavaScript]
-    P -->|requête HTTP| C[Contrôleur mince]
-    C --> S[Logique métier<br/>Classe Service]
-    S --> M[Accès aux données<br/>Modèles Eloquent]
-    M <--> D[(Base MySQL)]
-    M -->|résultat| S
-    S -->|résultat| C
-    C -->|vue Blade| P
-    P -->|affichage| U
-```
-
-_Figure 2 — Les trois tiers séparent l’interface, le traitement des opérations et le stockage._
-
-## Architecture globale
-
-Le Blog des Lauréats permet à un lauréat de Solicode Tanger de rédiger, publier et administrer ses articles, et aux apprenants de consulter ces retours d’expérience. L’application est déployée en ligne et repose sur Laravel, Blade et MySQL.
-
-```mermaid
-flowchart LR
-    U[Utilisateur<br/>lauréat ou apprenant] <-->|interface| UI[Navigateur<br/>gabarits Blade]
-    UI -->|requête HTTP| R[Routes Laravel<br/>routes/web.php]
-    R --> C[Contrôleur mince<br/>ArticleController]
-    C --> S[Classe Service<br/>ArticleService]
-    S --> M[Modèle Eloquent<br/>Article, Catégorie, Lauréat]
-    M <--> D[(Base MySQL)]
-    S -->|résultat ou erreur 404| C
-    C -->|vue Blade| UI
-```
-
-_Figure 3 — Architecture globale du Blog des Lauréats._
-
-Le parcours d’une requête est le suivant :
-
-1. Le navigateur demande l’URL d’un article (`/articles/{slug}`).
-2. La route Laravel transmet la requête à `ArticleController`, qui reste mince et délègue le travail à `ArticleService`.
-3. Le service lit l’article via le modèle Eloquent, puis déclenche une erreur 404 si l’article n’existe pas ou n’est pas publié.
-4. Le contrôleur transmet les données à la vue Blade, qui renvoie la page HTML consultable.
-
----
-
-# Prototype (fonctionnalités, classes)
-
----
-
-# Conception
-
----
-
-# Diagramme de classes
+14 : Diagramme de classes
 
 Le diagramme de classes décrit les entités principales du Blog des Lauréats : le lauréat qui rédige les articles, l’article publié et la catégorie qui le classe.
 
@@ -421,19 +259,120 @@ Ces classes correspondent aux modèles Eloquent manipulés par les classes Servi
 
 ---
 
-# Maquettes
+15 : Maquettes
 
 ---
 
-# Réalisation
+16 : Réalisation
+
+## Stack technologique
+
+Les technologies et outils suivants ont été sélectionnés pour garantir la performance, la maintenabilité et la rapidité de la plateforme de publication des lauréats de Solicode Tanger.
+
+### Technologies backend
+
+- **PHP et Laravel 13** : framework backend en architecture MVC, fournissant les routes, la validation, la gestion des erreurs (dont la page 404) et le rendu des gabarits Blade.
+- **Architecture 3-tiers / MVC** : séparation entre la présentation, la logique métier et l’accès aux données, avec un **contrôleur mince** qui délègue le traitement à une **classe Service**.
+
+### Technologies frontend
+
+- **Gabarits Blade** : moteur de rendu natif de Laravel, utilisé pour structurer l’interface en composants réutilisables et responsives.
+- **HTML5 et CSS3/Tailwind** : mise en page moderne, responsive et adaptée aux différents écrans.
+- **JavaScript** : interactions légères côté navigateur (navigation, menus, confirmations).
+
+### Base de données
+
+- **MySQL** : système de gestion de base de données relationnelle fiable, utilisé pour stocker les articles, les catégories et les comptes des lauréats.
+
+### Outils et utilitaires externes
+
+- **Mermaid** : génération des diagrammes de contexte, de cas d’utilisation et de classes à partir d’une syntaxe textuelle.
+- **Git et GitHub CLI (`gh`)** : gestion des versions, branches dédiées par sprint et publication du dépôt.
+- **Agent IA (Antigravity / Copilot)** : skills natifs et règles Always-On pour assister la rédaction et le développement.
+- **Markdown et Marp** : rédaction de la documentation et des diaporamas de restitution.
+- **Node.js** : compilation automatique du rapport modulaire (`concat-chapitres.js`).
+
+## Architecture du système
+
+### Architecture MVC
+
+Le modèle MVC répartit l'application en trois rôles :
+
+- **Modèle** : représente les données et les règles qui leur sont liées (articles, catégories, comptes des lauréats).
+- **Vue** : affiche les informations et reçoit les actions de l'utilisateur, au moyen des gabarits Blade.
+- **Contrôleur** : reçoit une action, sollicite la logique métier et transmet le résultat à la vue.
+
+```mermaid
+flowchart LR
+    U[Utilisateur] -->|action| V[Vue Blade]
+    V -->|requête HTTP| C[Contrôleur]
+    C -->|appel| S[Classe Service]
+    S -->|lecture ou modification| M[Modèle Eloquent]
+    M -->|données| S
+    S -->|résultat| C
+    C -->|données à afficher| V
+    V -->|affichage HTML| U
+```
+
+_Figure 1 — Échange MVC : le contrôleur coordonne la vue, le service et le modèle lors d’une requête._
+
+Dans le projet, MVC est fourni par Laravel : les routes associent une URL à un contrôleur. Le contrôleur reste **mince** : il valide l’entrée, appelle une classe Service qui porte le traitement métier, puis retourne une vue Blade ou une réponse d’erreur. Les modèles Eloquent représentent les tables MySQL et les vues Blade produisent le HTML envoyé au navigateur.
+
+### Architecture 3-tiers
+
+Cette architecture sépare l’application en couches qui communiquent de proche en proche :
+
+- **Présentation** : gabarits Blade responsives (HTML5, CSS3/Tailwind, JavaScript) ; envoie les requêtes et affiche les réponses.
+- **Logique métier** : contrôleurs minces et classes Service qui appliquent les règles du projet.
+- **Accès aux données** : modèles Eloquent qui lisent et écrivent dans la base MySQL.
+
+```mermaid
+flowchart TB
+    U[Utilisateur] --> P[Présentation<br/>Blade, HTML5, CSS3/Tailwind, JavaScript]
+    P -->|requête HTTP| C[Contrôleur mince]
+    C --> S[Logique métier<br/>Classe Service]
+    S --> M[Accès aux données<br/>Modèles Eloquent]
+    M <--> D[(Base MySQL)]
+    M -->|résultat| S
+    S -->|résultat| C
+    C -->|vue Blade| P
+    P -->|affichage| U
+```
+
+_Figure 2 — Les trois tiers séparent l’interface, le traitement des opérations et le stockage._
+
+### Architecture globale
+
+Le Blog des Lauréats permet à un lauréat de Solicode Tanger de rédiger, publier et administrer ses articles, et aux apprenants de consulter ces retours d’expérience. L’application est déployée en ligne et repose sur Laravel, Blade et MySQL.
+
+```mermaid
+flowchart LR
+    U[Utilisateur<br/>lauréat ou apprenant] <-->|interface| UI[Navigateur<br/>gabarits Blade]
+    UI -->|requête HTTP| R[Routes Laravel<br/>routes/web.php]
+    R --> C[Contrôleur mince<br/>ArticleController]
+    C --> S[Classe Service<br/>ArticleService]
+    S --> M[Modèle Eloquent<br/>Article, Catégorie, Lauréat]
+    M <--> D[(Base MySQL)]
+    S -->|résultat ou erreur 404| C
+    C -->|vue Blade| UI
+```
+
+_Figure 3 — Architecture globale du Blog des Lauréats._
+
+Le parcours d’une requête est le suivant :
+
+1. Le navigateur demande l’URL d’un article (`/articles/{slug}`).
+2. La route Laravel transmet la requête à `ArticleController`, qui reste mince et délègue le travail à `ArticleService`.
+3. Le service lit l’article via le modèle Eloquent, puis déclenche une erreur 404 si l’article n’existe pas ou n’est pas publié.
+4. Le contrôleur transmet les données à la vue Blade, qui renvoie la page HTML consultable.
 
 ---
 
-# Interfaces
+17 : Interfaces
 
 ---
 
-# Conclusion
+18 : Conclusion
 
 ---
 

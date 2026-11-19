@@ -1,6 +1,35 @@
-# Architecture du système
+# Réalisation
 
-## Architecture MVC
+## Stack technologique
+
+Les technologies et outils suivants ont été sélectionnés pour garantir la performance, la maintenabilité et la rapidité de la plateforme de publication des lauréats de Solicode Tanger.
+
+### Technologies backend
+
+- **PHP et Laravel 13** : framework backend en architecture MVC, fournissant les routes, la validation, la gestion des erreurs (dont la page 404) et le rendu des gabarits Blade.
+- **Architecture 3-tiers / MVC** : séparation entre la présentation, la logique métier et l’accès aux données, avec un **contrôleur mince** qui délègue le traitement à une **classe Service**.
+
+### Technologies frontend
+
+- **Gabarits Blade** : moteur de rendu natif de Laravel, utilisé pour structurer l’interface en composants réutilisables et responsives.
+- **HTML5 et CSS3/Tailwind** : mise en page moderne, responsive et adaptée aux différents écrans.
+- **JavaScript** : interactions légères côté navigateur (navigation, menus, confirmations).
+
+### Base de données
+
+- **MySQL** : système de gestion de base de données relationnelle fiable, utilisé pour stocker les articles, les catégories et les comptes des lauréats.
+
+### Outils et utilitaires externes
+
+- **Mermaid** : génération des diagrammes de contexte, de cas d’utilisation et de classes à partir d’une syntaxe textuelle.
+- **Git et GitHub CLI (`gh`)** : gestion des versions, branches dédiées par sprint et publication du dépôt.
+- **Agent IA (Antigravity / Copilot)** : skills natifs et règles Always-On pour assister la rédaction et le développement.
+- **Markdown et Marp** : rédaction de la documentation et des diaporamas de restitution.
+- **Node.js** : compilation automatique du rapport modulaire (`concat-chapitres.js`).
+
+## Architecture du système
+
+### Architecture MVC
 
 Le modèle MVC répartit l'application en trois rôles :
 
@@ -24,7 +53,7 @@ _Figure 1 — Échange MVC : le contrôleur coordonne la vue, le service et le m
 
 Dans le projet, MVC est fourni par Laravel : les routes associent une URL à un contrôleur. Le contrôleur reste **mince** : il valide l’entrée, appelle une classe Service qui porte le traitement métier, puis retourne une vue Blade ou une réponse d’erreur. Les modèles Eloquent représentent les tables MySQL et les vues Blade produisent le HTML envoyé au navigateur.
 
-## Architecture 3-tiers
+### Architecture 3-tiers
 
 Cette architecture sépare l’application en couches qui communiquent de proche en proche :
 
@@ -47,7 +76,7 @@ flowchart TB
 
 _Figure 2 — Les trois tiers séparent l’interface, le traitement des opérations et le stockage._
 
-## Architecture globale
+### Architecture globale
 
 Le Blog des Lauréats permet à un lauréat de Solicode Tanger de rédiger, publier et administrer ses articles, et aux apprenants de consulter ces retours d’expérience. L’application est déployée en ligne et repose sur Laravel, Blade et MySQL.
 

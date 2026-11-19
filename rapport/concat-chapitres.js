@@ -232,21 +232,24 @@ function readChapter(filePath) {
 /**
  * Déduit un titre lisible à partir du nom de fichier.
  *
- * Le préfixe numérique et les séparateurs sont retirés, puis la première
- * lettre est mise en majuscule. Un nom purement numérique ne fournit aucun
+ * Le numéro et son séparateur sont retirés, puis les tirets et underscores du
+ * titre sont convertis en espaces. Un nom purement numérique ne fournit aucun
  * titre : le chapitre s'affichera « Sans titre » s'il n'a pas de titre de
  * niveau 1.
  *
  * @param {string} filename Nom du fichier, avec ou sans extension.
  * @returns {string} Titre déduit, ou chaîne vide si le nom ne contient que
  *                   des chiffres.
- * @example titleFromFilename('03-contexte_du-projet.md') // 'Contexte du projet'
- * @example titleFromFilename('12.md')                    // ''
+ * @example titleFromFilename('3 - Contexte du projet.md') // 'Contexte du projet'
+ * @example titleFromFilename('03-contexte_du-projet.md')  // 'Contexte du projet'
+ * @example titleFromFilename('12.md')                     // ''
  */
 function titleFromFilename(filename) {
     const name = path.basename(filename, path.extname(filename))
-        .replace(/^\d+[\s._-]*/, '')
-        .replace(/[-_]+/g, ' ')
+        .replace(/^\d+\s+-\s+/, '')     // format courant : « 1 - Titre »
+        .replace(/^\d+[\s._-]*/, '')    // formats précédents : « 1_Titre », « 1-Titre »
+        .replace(/^\s*:\s*/, '')
+        .replace(/[_-]+/g, ' ')
         .replace(/\s+/g, ' ')
         .trim();
 
@@ -393,6 +396,14 @@ const parsedChapters = chapters.map(file => {
 
 // La liste reprend uniquement les titres des chapitres : le chapitre
 // « Table des matières » ne se cite pas lui-même.
+// On numérote les chapitres hors TOC afin d’afficher « 1 : Titre » etc.
+let numero = 0;
+parsedChapters.forEach(chapter => {
+    if (!chapter.isToc) {
+        chapter.numero = ++numero;
+    }
+});
+
 const summary = parsedChapters
     .filter(chapter => !chapter.isToc)
     .map(chapter => chapter.title || 'Sans titre');
@@ -421,8 +432,10 @@ parsedChapters.forEach((chapter, index) => {
 
     body = rewriteImages(body, chapter.filePath);
 
-    // Titre seul, sans numérotation : « # Réalisation »
-    const heading = `# ${chapter.title || (chapter.isToc ? 'Table des matières' : 'Sans titre')}`;
+    // Titre avec numéro de chapitre : « 1 : Réalisation » (hors TOC)
+    const heading = chapter.isToc
+        ? `${chapter.title || 'Table des matières'}`
+        : `${chapter.numero} : ${chapter.title || 'Sans titre'}`;
 
     content += body
         ? `${heading}\n\n${body}\n\n---\n\n`
