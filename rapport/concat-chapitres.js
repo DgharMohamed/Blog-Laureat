@@ -30,6 +30,19 @@ const path = require('path');
 
 const SCRIPT_DIR = __dirname;
 
+/**
+ * Lit les options de la ligne de commande.
+ *
+ * Accepte les deux écritures « --option valeur » et « --option=valeur »,
+ * ainsi que les alias courts. Une option inconnue, ou une option attendant
+ * une valeur qui n'en a pas, interrompt le script avec le code de sortie 1.
+ *
+ * @param {string[]} argv Arguments bruts, sans « node » ni le nom du script
+ *                        (généralement process.argv.slice(2)).
+ * @returns {{chapters: string, output: string, title: string, marp: boolean}}
+ *          Options résolues : chemins absolus pour « chapters » et « output »,
+ *          titre du rapport et activation de l'en-tête Marp.
+ */
 function parseArgs(argv) {
     const options = {
         chapters: path.join(SCRIPT_DIR, 'chapitres'),
@@ -93,7 +106,14 @@ const OUTPUT_DIR = path.dirname(OUTPUT_FILE);
 const TOC_MARKER = /<!--\s*SOMMAIRE\s*-->/;
 
 /**
- * Chemin affiché dans la console, toujours avec des séparateurs « / ».
+ * Met en forme un chemin pour l'affichage dans la console.
+ *
+ * Le chemin devient relatif au dossier courant et utilise des séparateurs
+ * « / » quel que soit le système, pour des messages identiques partout.
+ *
+ * @param {string} chemin Chemin absolu ou relatif à afficher.
+ * @returns {string} Chemin relatif avec des « / », ou « . » pour le dossier
+ *                   courant.
  */
 function affichage(chemin) {
     return path.relative(process.cwd(), chemin).split(path.sep).join('/') || '.';
@@ -123,9 +143,15 @@ if (path.resolve(OUTPUT_FILE) === path.resolve(CHAPTERS_DIR)) {
 // ======================================
 
 /**
- * Repère un rapport déjà compilé laissé dans le dossier : il ne doit pas
- * être relu comme un chapitre, sinon le rapport s'auto-inclut à chaque
- * exécution.
+ * Indique si un fichier est un rapport déjà compilé par ce script.
+ *
+ * La détection se fait sur la signature présente dans l'en-tête généré
+ * (« Document consolidé généré automatiquement ») : un rapport laissé dans le
+ * dossier des chapitres ne doit pas être relu comme un chapitre, sinon il
+ * s'auto-inclurait à chaque exécution.
+ *
+ * @param {string} filePath Chemin absolu du fichier Markdown à examiner.
+ * @returns {boolean} true si le fichier ressemble à un rapport généré.
  */
 function estRapportGenere(filePath) {
     const debut = fs.readFileSync(filePath, 'utf-8').slice(0, 400);
@@ -173,15 +199,29 @@ console.log(`Fichiers détectés     : ${chapters.length}`);
 // ======================================
 
 /**
- * Retire un éventuel préfixe « Chapitre N : » déjà présent.
+ * Retire un préfixe de numérotation déjà écrit dans un titre.
+ *
+ * Utile pour les chapitres rédigés avant l'automatisation, dont le titre
+ * contient encore « Chapitre N : » : le rapport n'affiche que le titre.
+ *
+ * @param {string} text Titre brut, par exemple « Chapitre 22 : Réalisation ».
+ * @returns {string} Titre sans préfixe (« Réalisation »), ou texte inchangé
+ *                   s'il n'en contient pas.
+ * @example stripChapterPrefix('Chapitre 3 - Conception') // 'Conception'
  */
 function stripChapterPrefix(text) {
     return text.replace(/^(?:chapitre|chapter)\s+\d+\s*[:.\-–—]?\s*/i, '').trim();
 }
 
 /**
- * Lit un chapitre en normalisant l'encodage : BOM retiré et fins de
- * ligne converties en LF, pour que la détection du titre reste fiable.
+ * Lit un chapitre et normalise son encodage.
+ *
+ * Le BOM UTF-8 est retiré et les fins de ligne CRLF sont converties en LF,
+ * pour que la détection du titre reste fiable sur les fichiers édités sous
+ * Windows.
+ *
+ * @param {string} filePath Chemin absolu du fichier Markdown.
+ * @returns {string} Contenu du chapitre, sans BOM, en LF.
  */
 function readChapter(filePath) {
     return fs.readFileSync(filePath, 'utf-8')
@@ -190,10 +230,18 @@ function readChapter(filePath) {
 }
 
 /**
- * Déduit un titre lisible à partir du nom de fichier :
- * « 03-contexte_du-projet.md » -> « Contexte du projet »
- * Un nom purement numérique (« 12.md ») ne fournit aucun titre :
- * le chapitre est alors seulement numéroté.
+ * Déduit un titre lisible à partir du nom de fichier.
+ *
+ * Le préfixe numérique et les séparateurs sont retirés, puis la première
+ * lettre est mise en majuscule. Un nom purement numérique ne fournit aucun
+ * titre : le chapitre s'affichera « Sans titre » s'il n'a pas de titre de
+ * niveau 1.
+ *
+ * @param {string} filename Nom du fichier, avec ou sans extension.
+ * @returns {string} Titre déduit, ou chaîne vide si le nom ne contient que
+ *                   des chiffres.
+ * @example titleFromFilename('03-contexte_du-projet.md') // 'Contexte du projet'
+ * @example titleFromFilename('12.md')                    // ''
  */
 function titleFromFilename(filename) {
     const name = path.basename(filename, path.extname(filename))
@@ -210,9 +258,17 @@ function titleFromFilename(filename) {
 }
 
 /**
- * Extrait le titre de niveau 1 du chapitre, s'il existe, et renvoie le
- * contenu restant. Le titre précédent est remplacé par la numérotation
- * automatique pour éviter les doublons.
+ * Sépare le titre de niveau 1 du reste du chapitre.
+ *
+ * Le premier bloc non vide du fichier est examiné : s'il s'agit d'un titre
+ * « # … », il devient le titre du chapitre (préfixe « Chapitre N : » retiré)
+ * et n'est pas répété dans le corps. Sinon, le titre est déduit du nom du
+ * fichier et tout le contenu est conservé.
+ *
+ * @param {string} markdown Contenu du chapitre, déjà normalisé (LF, sans BOM).
+ * @param {string} filename Nom du fichier, utilisé comme titre de secours.
+ * @returns {{title: string, body: string}} Titre du chapitre et contenu
+ *          restant, sans le titre d'origine.
  */
 function splitTitle(markdown, filename) {
     const lines = markdown.split('\n');
@@ -236,8 +292,17 @@ function splitTitle(markdown, filename) {
 const imagesManquantes = [];
 
 /**
- * Réécrit les chemins d'images relatifs au chapitre pour qu'ils restent
- * valides depuis l'emplacement du fichier généré.
+ * Réécrit les chemins d'images pour qu'ils restent valides après assemblage.
+ *
+ * Chaque image relative au chapitre est résolue depuis le dossier du
+ * chapitre, puis exprimée relativement au dossier du rapport généré. Les URL
+ * absolues (http, data, mailto) sont laissées telles quelles, les chemins
+ * contenant des espaces ou des parenthèses sont encadrés de « <…> », et les
+ * images introuvables sont ajoutées à `imagesManquantes` sans être modifiées.
+ *
+ * @param {string} markdown Contenu Markdown du chapitre.
+ * @param {string} chapterFile Chemin absolu du fichier du chapitre.
+ * @returns {string} Markdown avec les chemins d'images corrigés.
  */
 function rewriteImages(markdown, chapterFile) {
     const chapterDir = path.dirname(chapterFile);
@@ -309,7 +374,7 @@ content += `# ${OPTIONS.title}
 `;
 
 // ======================================
-// 7. LECTURE ET NUMÉROTATION
+// 7. LECTURE DES CHAPITRES ET TABLE DES MATIÈRES
 // ======================================
 
 const parsedChapters = chapters.map(file => {
@@ -326,7 +391,8 @@ const parsedChapters = chapters.map(file => {
     };
 });
 
-// Le chapitre qui contient le sommaire ne figure pas dans sa propre liste
+// La liste reprend uniquement les titres des chapitres : le chapitre
+// « Table des matières » ne se cite pas lui-même.
 const summary = parsedChapters
     .filter(chapter => !chapter.isToc)
     .map(chapter => chapter.title || 'Sans titre');
