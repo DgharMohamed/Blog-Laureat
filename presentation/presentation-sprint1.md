@@ -2,7 +2,7 @@
 marp: true
 theme: gaia
 paginate: true
-header: "Solicode N3 - Sprint 1: Framing and Initialization"
+header: "Solicode N3 - Sprint 1: Online competition platform"
 footer: "Supervisor: ES-SARRAJ Fouad | Solicode Tanger"
 style: |
   section {
@@ -57,23 +57,9 @@ style: |
 
 ---
 
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Context
-
----
-
 # Context
 
 content here.
-
----
-
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Work to Do in the Sprint
 
 ---
 
@@ -83,23 +69,9 @@ content here.
 
 ---
 
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Technical Project
-
----
-
 # Technical Project
 
 content here.
-
----
-
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Technical Project: Work to Do
 
 ---
 
@@ -113,13 +85,6 @@ content here.
 <!-- _paginate: false -->
 
 # Demonstration
-
----
-
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Key Questions
 
 ---
 

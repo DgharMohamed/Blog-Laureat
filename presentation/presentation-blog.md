@@ -39,7 +39,7 @@ style: |
 - **Learner** : Dghar Mohamed
 - **Supervisor** : ES-SARRAJ Fouad
 - **Institution** : Solicode Tanger
-- **Field** : Web Development
+- **Field** : Web Developmentwhy slides on presentayion folder are duplicate d
 - **Competency** : Develop a complete web application
 - **Date** : 2026-11-20
 
@@ -60,23 +60,9 @@ style: |
 
 ---
 
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Introduction
-
----
-
 # Introduction
 
 content here.
-
----
-
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Project Context
 
 ---
 
@@ -86,23 +72,9 @@ content here.
 
 ---
 
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Working Method
-
----
-
 # Working Method
 
 content here.
-
----
-
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Functional Branch
 
 ---
 
@@ -112,23 +84,9 @@ content here.
 
 ---
 
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Technical Branch
-
----
-
 # Technical Branch
 
 content here.
-
----
-
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Design
 
 ---
 
@@ -138,23 +96,9 @@ content here.
 
 ---
 
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Implementation
-
----
-
 # Implementation
 
 content here.
-
----
-
-<!-- _class: blank -->
-<!-- _paginate: false -->
-
-# Conclusion
 
 ---
 
