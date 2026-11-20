@@ -40,7 +40,7 @@ style: |
 - **Supervisor** : ES-SARRAJ Fouad
 - **Institution** : Solicode Tanger
 - **Field** : Web Development
-- **Competency** : Initialization, Scrum Framing and 2-Tier Architecture
+- **Competency** : Initialization, Scrum and 3-Tier Architecture
 - **Date** : 2026-11-20
 
 ---
