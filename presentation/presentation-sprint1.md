@@ -34,7 +34,7 @@ style: |
 
 <!-- _class: lead -->
 # Sprint 1 Review
-### Framing, AI Environment and Article Consultation
+### Online competition platform
 
 - **Learner** : Dghar Mohamed
 - **Supervisor** : ES-SARRAJ Fouad
